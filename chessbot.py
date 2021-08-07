@@ -10,11 +10,11 @@ def moves(key):
 
     return
 
-stockfish = Stockfish("/home/r00768/learn/python/chessbot/stockfish_14_linux_x64/stockfish_14_x64", parameters={"Threads": 2, "Skill Level": 20})
+stockfish = Stockfish(" complete path of your stockfish file ", parameters={"Threads": 2, "Skill Level": 20})
 
 print(stockfish.get_parameters())
 
-headers = {'Authorization': 'Bearer nYPr0pUv4urCWDln'} 
+headers = {'Authorization': 'Bearer " your api key without double quotes "'} 
 
 while True:
     

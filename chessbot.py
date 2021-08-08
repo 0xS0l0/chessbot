@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
-import pyautogui as pygui
+import pyautogui as gui
 from stockfish import Stockfish
-import requests as rs
+import requests as rq
 
 def moves(key):
 
-    pygui.press(key)
+    gui.press(key)
 
     return
 
@@ -18,7 +18,7 @@ headers = {'Authorization': 'Bearer " your api key without double quotes "'}
 
 while True:
     
-    response = rs.get("https://lichess.org/api/account/playing", headers=headers)
+    response = rq.get("https://lichess.org/api/account/playing", headers=headers)
 
     print(stockfish.get_board_visual())
 
@@ -27,7 +27,7 @@ while True:
     stockfish.set_fen_position(jsonD["nowPlaying"][0]["fen"]+" "+jsonD["nowPlaying"][0]["color"][0])
 
     if(jsonD["nowPlaying"][0]["isMyTurn"]):
-        pygui.keyDown('enter')
+        gui.keyDown('enter')
 
         move = stockfish.get_best_move_time(5000)
         moves(move[0])
